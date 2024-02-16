@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="mt-5">Food Details</h2>
+
+  <% if @food.present? %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h3 class="card-title"><%= @food.description %></h3>
+        <p class="card-text">Publication Date: <%= @food.publicationDate %></p>
+        
+        <h4>Nutrients (per serving size):</h4>
+        <% @food.foodNutrients.each do |nutrient| %>
+          <p class="card-text"><strong><%= nutrient.nutrient.name %>:</strong> <%= nutrient.amount %> <%= nutrient.nutrient.unitName %></p>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p>No food selected</p>
+  <% end %>
+</div>
